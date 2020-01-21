@@ -1,5 +1,8 @@
 export default class TileData {
-    constructor(isOccupied) {
-        this.isOccupied = isOccupied;
+    constructor(takenBy, tileNumber) {
+        // chwilowo bedzie boolean dla debugowania
+        // ideal ma byc string
+        this.takenBy = takenBy;
+        this.tileNumber = tileNumber;
     }
 }

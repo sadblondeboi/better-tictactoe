@@ -14,19 +14,24 @@
 <script>
 
 
-import GameTile from './GameTile';
+import GameTile from './GameTile.vue';
 import TileData from '../../TileData.js';
 
 export default {
     created: function () {
         for(let i = 0; i < 9; i++) {
-            this.tiles.push(new TileData(false));
+            this.tiles.push(new TileData(false, i));
         }
     },
 
     data(){
         return{
-            tiles: []
+            activePlayer: 'O',
+            gameStatus: false,
+            tiles: [],
+            winConditions: [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 5], [2, 5, 8], [0, 4, 8], [6, 4, 2]
+            ]
         }
     },
     methods: {

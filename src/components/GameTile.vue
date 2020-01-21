@@ -1,6 +1,6 @@
 <template>
     <div @click="CaptureTile()">
-        <h3>{{this.tileData.isOccupied}}</h3>
+        <h3>{{this.tileData.takenBy}}</h3>
     </div>
 
 </template>
@@ -18,11 +18,12 @@ export default {
     },
     methods: {
         Test () {
-            console.log(this.tileData.isOccupied);
+            console.log(this.tileData.takenBy);
         },
-        CaptureTile () {
-            if(!this.tileData.isOccupied) {
-                this.tileData.isOccupied = true;
+        // jak bedzie vuex to sie naprawi bo duzo jebania
+        captureTile() {
+            if(this.TileData.takenBy){
+                this.TileData.takenBy = true;
             }
         }
     }
