@@ -1,16 +1,14 @@
 <template>
     <div class="wrapper">
-        <h1>grid ty kurwo jebana</h1>
-        <form action="submit">
+        <h1>Lorem ipsum dolor sit amet.</h1>
+        <form v-on:submit.prevent action="submit"  @submit="startGame">
             <div class="insideform">
                 player1: 
-                <input type="text"><br><br>
+                <input :value="player1" type="text"><br><br>
                 player2:
-                <input type="text"><br><br>
+                <input :value="player2" type="text"><br><br>
             </div>
-            to na razie jedynie przerzuca na nastepna strone, poza tym niczego nie robi bo ni mo backendu <br><br>
-            <input @click='goPlay' type="submit" value="aaaaaaaa">
-            
+            <button type="submit">submit</button>      
         </form>
     </div>
 </template>
@@ -18,10 +16,27 @@
 <script>
 export default {
     name: "Home",
-    methods: {
-        goPlay() {
-            this.$router.push('/Game');
+    data () {
+        return {
+            player1: this.$store.state.playerInput[0].input,
+            player2: this.$store.state.playerInput[1].input,
         }
+    },
+    methods: {
+         addPlayer (playerName) {
+            this.$store.commit('addPlayer', playerName)
+        },
+        updateInput (playerName) {
+             this.$store.commit('updateInput', playerName)
+         },
+        test () {
+          this.playerName = this.userInput;
+        },
+        startGame () {
+            this.addPlayer(this.player1);
+            this.addPlayer(this.player2);
+            // this.$router.push('/Game');
+        },
     }
     
 
@@ -42,8 +57,5 @@ export default {
     grid-auto-rows: 30px;
     grid-auto-columns: 30px;
 }    
-
-    
-
 
 </style>

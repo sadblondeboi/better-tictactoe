@@ -7,13 +7,11 @@
         
     </div>
 
-    <button @click='goHome'>go home</button>
+    <button @click='test()'>go home</button>
     </div>
 </template>
 
 <script>
-
-
 import GameTile from './GameTile.vue';
 import TileData from '../../TileData.js';
 
@@ -37,13 +35,16 @@ export default {
     methods: {
         goHome() {
             this.$router.push('/');
+        },
+        test() {
+            console.log(this.$store.state);     
         }
     },
     components: {
-        GameTile
-    }
-    
+      GameTile
+    } 
 }
+
 </script>
 
 <style>
