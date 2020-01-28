@@ -4,9 +4,9 @@
         <form v-on:submit.prevent action="submit"  @submit="startGame">
             <div class="insideform">
                 player1: 
-                <input :value="player1" type="text"><br><br>
+                <input v-model="player1" type="text"><br><br>
                 player2:
-                <input :value="player2" type="text"><br><br>
+                <input v-model="player2" type="text"><br><br>
             </div>
             <button type="submit">submit</button>      
         </form>
@@ -18,24 +18,30 @@ export default {
     name: "Home",
     data () {
         return {
-            player1: this.$store.state.playerInput[0].input,
-            player2: this.$store.state.playerInput[1].input,
+            player1: "",
+            player2: "",
+        }
+    },
+    computed: {
+        getActivePlayer() {
+            return this.$store.getters.getActivePlayer;
         }
     },
     methods: {
-         addPlayer (playerName) {
+        addPlayer (playerName) {
             this.$store.commit('addPlayer', playerName)
         },
-        updateInput (playerName) {
-             this.$store.commit('updateInput', playerName)
-         },
+        setActivePlayer (playerId) {
+            this.$store.commit('setActivePlayer', playerId)
+        },
         test () {
           this.playerName = this.userInput;
         },
         startGame () {
             this.addPlayer(this.player1);
             this.addPlayer(this.player2);
-            // this.$router.push('/Game');
+            this.setActivePlayer(1);
+            this.$router.push('/Game');
         },
     }
     

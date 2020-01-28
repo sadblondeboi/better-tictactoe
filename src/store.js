@@ -8,27 +8,31 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
      state: {
         players: [
-            {id: 1, name: "mklowicz", online: false},
-            {id: 2, name: "morales", online: false},
-            {id: 3, name: "essa", online: true},
-            {id: 4, name: "mario", online: false}
+
         ],
-        playerInput: [
-            {id: 1, input: null},
-            {id: 2, input: null}
-        ]
     },
     getters: {
-    
+        getActivePlayer: state => {
+            const activePlayer = state.players.find(element => element.active);
+            return activePlayer;
+        }
     },
     mutations: {
         addPlayer (state, name) {
             const id = state.players.length + 1;
-            const player = {id: id, name: name, online: false}
+            const player = {id: id, name: name, active: false}
             state.players.push(player)
         },
-         updateInput (state, payload) {
-             state.userInput = payload;
+        setActivePlayer (state, playerId) {
+            const player = state.players.find(element => element.id == playerId);
+            player.active = true;
+        },
+        changeActivePlayer (state) {
+            const activePlayer = state.players.find(element => element.active);
+            const unactivePlayer = state.players.find(element => !element.active);
+
+            activePlayer.active = false;
+            unactivePlayer.active - true;
         }
     }   
 })

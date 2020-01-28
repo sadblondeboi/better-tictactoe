@@ -1,5 +1,5 @@
 <template>
-    <div @click="CaptureTile()">
+    <div @click="onClicked">
         <h3>{{this.tileData.takenBy}}</h3>
     </div>
 
@@ -22,9 +22,19 @@ export default {
         },
         // jak bedzie vuex to sie naprawi bo duzo jebania
         captureTile() {
-            if(this.TileData.takenBy){
-                this.TileData.takenBy = true;
+            if(this.TileData.takenBy == null){
+                this.TileData.takenBy = this.getActivePlayer;
+            } else {
+                console.log('zajete przez ' + this.getActivePlayer)
             }
+        },
+        onClicked () {
+             this.$emit('tile-clicked', this.tileData.tileNumber)
+        }
+    },
+    computed: {
+        getActivePlayer() {
+            return this.$store.getters.getActivePlayer;
         }
     }
 }

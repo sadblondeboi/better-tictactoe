@@ -7,7 +7,7 @@
         
     </div>
 
-    <button @click='test()'>go home</button>
+    <button @click='goHome'>go home</button>
     </div>
 </template>
 
@@ -18,14 +18,12 @@ import TileData from '../../TileData.js';
 export default {
     created: function () {
         for(let i = 0; i < 9; i++) {
-            this.tiles.push(new TileData(false, i));
+            this.tiles.push(new TileData(null, i));
         }
     },
 
     data(){
         return{
-            activePlayer: 'O',
-            gameStatus: false,
             tiles: [],
             winConditions: [
                 [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 5], [2, 5, 8], [0, 4, 8], [6, 4, 2]
@@ -37,7 +35,7 @@ export default {
             this.$router.push('/');
         },
         test() {
-            console.log(this.$store.state);     
+            console.log('makarena')
         }
     },
     components: {
