@@ -1,14 +1,14 @@
 <template>
     <div class="wrapper">
-        <h1>Lorem ipsum dolor sit amet.</h1>
+        <h2>Better tictactoe with vue and vuex.</h2>
         <form v-on:submit.prevent action="submit"  @submit="startGame">
             <div class="insideform">
-                player1: 
-                <input v-model="player1" type="text"><br><br>
-                player2:
-                <input v-model="player2" type="text"><br><br>
+                    <h3>Player 1 name:</h3>
+                    <h3>Player 2 name:</h3>
+                    <input v-model="player2" type="text">
+                    <input v-model="player1" type="text">
             </div>
-            <button type="submit">submit</button>      
+            <button type="submit">Play</button>      
         </form>
     </div>
 </template>
@@ -34,9 +34,7 @@ export default {
         setActivePlayer (playerId) {
             this.$store.commit('setActivePlayer', playerId)
         },
-        test () {
-          this.playerName = this.userInput;
-        },
+
         startGame () {
             this.addPlayer(this.player1);
             this.addPlayer(this.player2);
@@ -44,24 +42,32 @@ export default {
             this.$router.push('/Game');
         },
     }
-    
-
 }
 </script>
 
-<style scoped>
+<style>
 
 .wrapper {
-    width: 800px;
+    max-width: 700px;
     text-align: center;
 }
 
 .insideform {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 5px;
-    grid-auto-rows: 30px;
-    grid-auto-columns: 30px;
-}    
+    grid-template-rows: 36px 36px;
+    grid-gap: 15px;
+    padding: 10px;
+    font-size: 16px;
+}   
 
+button {
+    background-color: #2c3e50;
+    border: none;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px 32px;
+    border-radius: 4px;
+}
 </style>

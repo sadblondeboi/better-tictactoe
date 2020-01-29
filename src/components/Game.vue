@@ -1,10 +1,9 @@
 <template>
     <div>
     <h1>tutaj bedzie sie klikac na pola i wygrywac lub przegrywac he </h1>
-
+    
     <div class="board">
-        <GameTile class="tile" v-for="(tile, i) in tiles" :key="i" :tileData="tile"/>
-        
+        <GameTile class="tile" v-for="(tile, i) in tiles" :key="i" :tileData="tile"/> 
     </div>
 
     <button @click='goHome'>go home</button>
@@ -21,7 +20,9 @@ export default {
             this.tiles.push(new TileData(null, i));
         }
     },
-
+    components: {
+      GameTile
+    } ,
     data(){
         return{
             tiles: [],
@@ -34,13 +35,7 @@ export default {
         goHome() {
             this.$router.push('/');
         },
-        test() {
-            console.log('makarena')
-        }
     },
-    components: {
-      GameTile
-    } 
 }
 
 </script>

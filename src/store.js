@@ -13,7 +13,7 @@ export const store = new Vuex.Store({
     },
     getters: {
         getActivePlayer: state => {
-            const activePlayer = state.players.find(element => element.active);
+            const activePlayer = state.players.find(element => element.active == true);
             return activePlayer;
         }
     },
@@ -28,11 +28,11 @@ export const store = new Vuex.Store({
             player.active = true;
         },
         changeActivePlayer (state) {
-            const activePlayer = state.players.find(element => element.active);
-            const unactivePlayer = state.players.find(element => !element.active);
+            var activePlayer = state.players.find(element => element.active == true);
+            var unactivePlayer = state.players.find(element => element.active == false);
 
             activePlayer.active = false;
-            unactivePlayer.active - true;
+            unactivePlayer.active = true;
         }
     }   
 })
