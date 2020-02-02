@@ -1,24 +1,9 @@
 # better-tictactoe
 
-## Project setup
-```
-npm install
-```
+it's not finished at all, basic functionalities are all done, but there's still few things to do.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- icons for X and O
+- a restart button
+- counter (how many times a specific player has won)
+- scoreboard
+- probably some more functions, ill be back some day when I'll be bored, see ya
