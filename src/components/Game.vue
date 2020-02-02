@@ -55,13 +55,13 @@ export default {
                     if(this.tiles[this.winConditions[i][z]].takenBy == this.getActivePlayer.name)
                         win++;
                         if(win == 3){
-                            console.log('true');
+                            alert('wygrywa ' + this.getActivePlayer.name);
                             return true;
                     }
                 }
             }
             this.changeActivePlayer(payload);
-        }
+        },
     },
 }
 
