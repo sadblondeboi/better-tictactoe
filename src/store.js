@@ -27,7 +27,7 @@ export const store = new Vuex.Store({
             const player = state.players.find(element => element.id == playerId);
             player.active = true;
         },
-        changeActivePlayer (state) {
+        changeActivePlayer (state, payload) {
             var activePlayer = state.players.find(element => element.active == true);
             var unactivePlayer = state.players.find(element => element.active == false);
 

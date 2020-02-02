@@ -1,9 +1,9 @@
 <template>
-    <div>
-    <h1>tutaj bedzie sie klikac na pola i wygrywac lub przegrywac he </h1>
+    <div class="wrapper">
+    <h1>Lorem ipsum dolor sit amet consectetur.</h1>
     
     <div class="board">
-        <GameTile class="tile" v-for="(tile, i) in tiles" :key="i" :tileData="tile"/> 
+        <GameTile  v-on:tile-captured="winChecker" class="tile" v-for="(tile, i) in tiles" :key="i" :tileData="tile"/> 
     </div>
 
     <button @click='goHome'>go home</button>
@@ -17,7 +17,7 @@ import TileData from '../../TileData.js';
 export default {
     created: function () {
         for(let i = 0; i < 9; i++) {
-            this.tiles.push(new TileData(null, i));
+            this.tiles.push(new TileData("nic", i));
         }
     },
     components: {
@@ -27,20 +27,52 @@ export default {
         return{
             tiles: [],
             winConditions: [
-                [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 5], [2, 5, 8], [0, 4, 8], [6, 4, 2]
+                [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [6, 4, 2]
             ]
+        }
+    },
+    computed: {
+        getActivePlayer() {
+            return this.$store.getters.getActivePlayer;
         }
     },
     methods: {
         goHome() {
             this.$router.push('/');
         },
+        test () {
+            console.log('eh')
+        },
+        changeActivePlayer (payload) {
+            this.$store.commit('changeActivePlayer', payload)
+        },
+
+        winChecker(payload) {
+
+            for(let i = 0; i < this.winConditions.length; i++) {
+                let win = 0;
+                for(let z = 0; z < this.winConditions[i].length; z++) {
+                    if(this.tiles[this.winConditions[i][z]].takenBy == this.getActivePlayer.name)
+                        win++;
+                        if(win == 3){
+                            console.log('true');
+                            return true;
+                    }
+                }
+            }
+            this.changeActivePlayer(payload);
+        }
     },
 }
 
 </script>
 
 <style>
+
+.wrapper {
+    max-width: 700px;
+    text-align: center;
+}
 
 .board {
   padding: 10px;

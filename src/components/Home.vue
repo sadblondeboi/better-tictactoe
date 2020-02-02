@@ -3,11 +3,12 @@
         <h2>Better tictactoe with vue and vuex.</h2>
         <form v-on:submit.prevent action="submit"  @submit="startGame">
             <div class="insideform">
-                    <h3>Player 1 name:</h3>
-                    <h3>Player 2 name:</h3>
-                    <input v-model="player2" type="text">
-                    <input v-model="player1" type="text">
+                    <h3 class="item">Player 1 name:</h3>
+                    <h3 class="item">Player 2 name:</h3>
+                    <input class="item" v-model="player2" type="text">
+                    <input class="item" v-model="player1" type="text">
             </div>
+            <br>
             <button type="submit">Play</button>      
         </form>
     </div>
@@ -56,10 +57,17 @@ export default {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 36px 36px;
-    grid-gap: 15px;
+    grid-gap: 5px;
     padding: 10px;
-    font-size: 16px;
-}   
+    font-size: 16px;   
+    text-align: center;
+} 
+
+.item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 button {
     background-color: #2c3e50;

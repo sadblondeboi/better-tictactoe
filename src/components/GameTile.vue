@@ -31,14 +31,17 @@ export default {
         },
 
         captureTile() {
-            if(this.tileData.takenBy == null){
-                this.tileData.takenBy = this.getActivePlayer.name;
-                this.changeActivePlayer();
-            } else {
-                console.log('zajete przez ' + this.getActivePlayer.name)
-                this.changeActivePlayer();
+            var turn = true;
+            while(turn){
+                if(this.tileData.takenBy == "nic"){
+                    this.tileData.takenBy = this.getActivePlayer.name;
+                    this.$emit('tile-captured')
+                    turn = false;
+                } else {
+                    console.log('zajete przez ' + this.getActivePlayer.name);
+                    break;
+                }
             }
-            
         }
     },
 }
